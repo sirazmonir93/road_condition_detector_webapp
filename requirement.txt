@@ -6,3 +6,4 @@ seaborn==0.13.0
 pandas==2.1.0
 streamlit==1.29.0      # Pin to avoid breaking changes
 librosa==0.10.1
+gdown
