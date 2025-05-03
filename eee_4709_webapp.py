@@ -5,7 +5,6 @@ import time
 import datetime
 import random
 import pandas as pd
-import gdown
 
 st.set_page_config(
     page_title="Road Condition Detector",
@@ -14,41 +13,33 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Download model from Google Drive
-@st.cache_resource
-def load_model():
-    file_id = "1TbeCbjx3lDpxN_3rkyGloxHQEWfrDxZq"
-    url = f"https://drive.google.com/uc?id={file_id}"
-    output = "road_pothole_Rainy_days.keras"
-    gdown.download(url, output, quiet=True)
-    return tf.keras.models.load_model(output)
 
-# Load the model
-model = load_model()
+
+#model prediction function
+def model_prediction(test_image):
+    model = tf.keras.models.load_model("road_pothole_Rainy_days.keras")
     
-# Load and preprocess the image
-image = tf.keras.preprocessing.image.load_img(test_image, target_size=(256, 256))  # Adjust size to match your model
-input_arr = tf.keras.preprocessing.image.img_to_array(image)
+    # Load and preprocess the image
+    image = tf.keras.preprocessing.image.load_img(test_image, target_size=(256, 256))  # Adjust size to match your model
+    input_arr = tf.keras.preprocessing.image.img_to_array(image)
     
-input_arr = np.array([input_arr])  # Convert single image to batch
+    input_arr = np.array([input_arr])  # Convert single image to batch
     
     # Get prediction (raw probability)
-raw_prediction = model.predict(input_arr)[0][0]  # Single value between 0 and 1
+    raw_prediction = model.predict(input_arr)[0][0]  # Single value between 0 and 1
     
     # Apply the same threshold you used during validation 
-threshold=0.3
-predicted_class = 1 if raw_prediction > threshold else 0
+    threshold=0.3
+    predicted_class = 1 if raw_prediction > threshold else 0
     
     # Map to class names
-class_names = ["BAD ROAD", "Good road"]
-result = class_names[predicted_class]
+    class_names = ["BAD ROAD", "Good road"]
+    result = class_names[predicted_class]
     
     # For confidence, use the raw prediction or its complement depending on the class
-confidence = raw_prediction if predicted_class == 1 else (1 - raw_prediction)
+    confidence = raw_prediction if predicted_class == 1 else (1 - raw_prediction)
     
-return result, confidence
-
-
+    return result, confidence
 
 #Sidebar------------------------------------------------------------------------------------------------------
 
