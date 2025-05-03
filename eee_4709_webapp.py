@@ -5,8 +5,6 @@ import time
 import datetime
 import random
 import pandas as pd
-import gdown
-import os
 
 st.set_page_config(
     page_title="Road Condition Detector",
@@ -15,47 +13,8 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-@st.cache_resource(ttl=3600, show_spinner=False)  # Cache for 1 hour
-def load_model():
-    MODEL_PATH = "/mount/src/road_condition_detector_webapp/road_model.keras"
-    FILE_ID = "1TbeCbjx3lDpxN_3rkyGloxHQEWfrDxZq"
-    
-    # Check for existing model file first
-    if os.path.exists(MODEL_PATH):
-        try:
-            return tf.keras.models.load_model(MODEL_PATH)
-        except Exception as e:
-            st.warning(f"Found model file but failed to load: {str(e)}")
-            os.remove(MODEL_PATH)
-    
-    # Download if not exists or previous download failed
-    try:
-        progress = st.progress(0, text="🚀 Downloading model (388MB)...")
-        def update_progress(current, total, width=80):
-            progress.progress(current/total, text=f"📥 Downloading: {current/1024/1024:.1f}MB of {total/1024/1024:.1f}MB")
-            
-        gdown.download(
-            f"https://drive.google.com/uc?id={FILE_ID}",
-            MODEL_PATH,
-            quiet=True,
-            fuzzy=True,
-            use_cookies=False,
-            callback=update_progress
-        )
-        
-        # Verify integrity
-        if os.path.getsize(MODEL_PATH) != 407_483_392:  # Replace with your actual file size
-            raise ValueError("Downloaded file size mismatch")
-            
-        return tf.keras.models.load_model(MODEL_PATH)
-        
-    except Exception as e:
-        st.error(f"❌ Critical error: {str(e)}")
-        st.stop()
 
-# Load model once per session
-if 'model' not in st.session_state:
-    st.session_state.model = load_model()
+
 #model prediction function
 def model_prediction(test_image):
     model = tf.keras.models.load_model("road_pothole_Rainy_days.keras")
