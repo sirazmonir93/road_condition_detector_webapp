@@ -26,27 +26,27 @@ def load_model():
 # Load the model
 model = load_model()
     
-    # Load and preprocess the image
-    image = tf.keras.preprocessing.image.load_img(test_image, target_size=(256, 256))  # Adjust size to match your model
-    input_arr = tf.keras.preprocessing.image.img_to_array(image)
+# Load and preprocess the image
+image = tf.keras.preprocessing.image.load_img(test_image, target_size=(256, 256))  # Adjust size to match your model
+input_arr = tf.keras.preprocessing.image.img_to_array(image)
     
-    input_arr = np.array([input_arr])  # Convert single image to batch
+input_arr = np.array([input_arr])  # Convert single image to batch
     
     # Get prediction (raw probability)
-    raw_prediction = model.predict(input_arr)[0][0]  # Single value between 0 and 1
+raw_prediction = model.predict(input_arr)[0][0]  # Single value between 0 and 1
     
     # Apply the same threshold you used during validation 
-    threshold=0.3
-    predicted_class = 1 if raw_prediction > threshold else 0
+threshold=0.3
+predicted_class = 1 if raw_prediction > threshold else 0
     
     # Map to class names
-    class_names = ["BAD ROAD", "Good road"]
-    result = class_names[predicted_class]
+class_names = ["BAD ROAD", "Good road"]
+result = class_names[predicted_class]
     
     # For confidence, use the raw prediction or its complement depending on the class
-    confidence = raw_prediction if predicted_class == 1 else (1 - raw_prediction)
+confidence = raw_prediction if predicted_class == 1 else (1 - raw_prediction)
     
-    return result, confidence
+return result, confidence
 
 
 
