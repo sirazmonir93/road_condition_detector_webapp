@@ -6,6 +6,7 @@ import datetime
 import random
 import pandas as pd
 import gdown
+import os
 
 st.set_page_config(
     page_title="Road Condition Detector",
