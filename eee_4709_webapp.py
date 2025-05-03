@@ -5,6 +5,7 @@ import time
 import datetime
 import random
 import pandas as pd
+import gdown
 
 st.set_page_config(
     page_title="Road Condition Detector",
@@ -13,11 +14,17 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Download model from Google Drive
+@st.cache_resource
+def load_model():
+    file_id = "1TbeCbjx3lDpxN_3rkyGloxHQEWfrDxZq"
+    url = f"https://drive.google.com/uc?id={file_id}"
+    output = "road_pothole_Rainy_days.keras"
+    gdown.download(url, output, quiet=True)
+    return tf.keras.models.load_model(output)
 
-
-#model prediction function
-def model_prediction(test_image):
-    model = tf.keras.models.load_model("road_pothole_Rainy_days.keras")
+# Load the model
+model = load_model()
     
     # Load and preprocess the image
     image = tf.keras.preprocessing.image.load_img(test_image, target_size=(256, 256))  # Adjust size to match your model
