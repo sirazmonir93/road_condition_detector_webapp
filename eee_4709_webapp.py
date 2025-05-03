@@ -14,16 +14,35 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Download model from Google Drive
 @st.cache_resource
 def load_model():
+    # File details
     file_id = "1TbeCbjx3lDpxN_3rkyGloxHQEWfrDxZq"
+    output_file = "road_model.keras"
     url = f"https://drive.google.com/uc?id={file_id}"
-    output = "road_pothole_Rainy_days.keras"
-    gdown.download(url, output, quiet=True)
-    return tf.keras.models.load_model(output)
+    
+    # Download with progress
+    try:
+        with st.spinner('🚀 Downloading model...'):
+            gdown.download(url, output_file, quiet=False)
+            
+        # Verify download
+        if not os.path.exists(output_file):
+            raise FileNotFoundError("Download failed - file not created")
+            
+        # Verify file size
+        file_size = os.path.getsize(output_file)
+        if file_size < 1024:  # Less than 1KB indicates error
+            os.remove(output_file)
+            raise ValueError("Download failed - invalid file size")
+            
+        return tf.keras.models.load_model(output_file)
+        
+    except Exception as e:
+        st.error(f"Error loading model: {str(e)}")
+        st.stop()
 
-# Load the model
+# Load model
 model = load_model()
 
 #model prediction function
