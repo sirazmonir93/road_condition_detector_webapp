@@ -14,37 +14,47 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-@st.cache_resource
+@st.cache_resource(ttl=3600, show_spinner=False)  # Cache for 1 hour
 def load_model():
-    # File details
-    file_id = "1TbeCbjx3lDpxN_3rkyGloxHQEWfrDxZq"
-    output_file = "road_model.keras"
-    url = f"https://drive.google.com/uc?id={file_id}"
+    MODEL_PATH = "/mount/src/road_condition_detector_webapp/road_model.keras"
+    FILE_ID = "1TbeCbjx3lDpxN_3rkyGloxHQEWfrDxZq"
     
-    # Download with progress
+    # Check for existing model file first
+    if os.path.exists(MODEL_PATH):
+        try:
+            return tf.keras.models.load_model(MODEL_PATH)
+        except Exception as e:
+            st.warning(f"Found model file but failed to load: {str(e)}")
+            os.remove(MODEL_PATH)
+    
+    # Download if not exists or previous download failed
     try:
-        with st.spinner('🚀 Downloading model...'):
-            gdown.download(url, output_file, quiet=False)
+        progress = st.progress(0, text="🚀 Downloading model (388MB)...")
+        def update_progress(current, total, width=80):
+            progress.progress(current/total, text=f"📥 Downloading: {current/1024/1024:.1f}MB of {total/1024/1024:.1f}MB")
             
-        # Verify download
-        if not os.path.exists(output_file):
-            raise FileNotFoundError("Download failed - file not created")
+        gdown.download(
+            f"https://drive.google.com/uc?id={FILE_ID}",
+            MODEL_PATH,
+            quiet=True,
+            fuzzy=True,
+            use_cookies=False,
+            callback=update_progress
+        )
+        
+        # Verify integrity
+        if os.path.getsize(MODEL_PATH) != 407_483_392:  # Replace with your actual file size
+            raise ValueError("Downloaded file size mismatch")
             
-        # Verify file size
-        file_size = os.path.getsize(output_file)
-        if file_size < 1024:  # Less than 1KB indicates error
-            os.remove(output_file)
-            raise ValueError("Download failed - invalid file size")
-            
-        return tf.keras.models.load_model(output_file)
+        return tf.keras.models.load_model(MODEL_PATH)
         
     except Exception as e:
-        st.error(f"Error loading model: {str(e)}")
+        st.error(f"❌ Critical error: {str(e)}")
         st.stop()
 
-# Load model
-model = load_model()
-
+# Load model once per session
+if 'model' not in st.session_state:
+    st.session_state.model = load_model()
 #model prediction function
 def model_prediction(test_image):
     model = tf.keras.models.load_model("road_pothole_Rainy_days.keras")
