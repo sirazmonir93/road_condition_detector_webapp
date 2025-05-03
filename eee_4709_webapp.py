@@ -1,4 +1,3 @@
-
 import streamlit as st
 import tensorflow as tf
 import numpy as np
@@ -6,6 +5,8 @@ import time
 import datetime
 import random
 import pandas as pd
+import gdown
+import os
 
 st.set_page_config(
     page_title="Road Condition Detector",
@@ -14,36 +15,58 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Function to download the model from Google Drive
+@st.cache_resource
+def download_model():
+    model_path = "road_pothole_Rainy_days.keras"
+    
+    # Check if model already exists
+    if not os.path.exists(model_path):
+        st.info("Downloading model... Please wait.")
+        # Extract file ID from Google Drive link
+        file_id = "1TbeCbjx3lDpxN_3rkyGloxHQEWfrDxZq"
+        url = f"https://drive.google.com/uc?id={file_id}"
+        
+        # Download the file
+        gdown.download(url, model_path, quiet=False)
+        st.success("Model downloaded successfully!")
+    
+    return model_path
 
-
-#model prediction function
+# Model prediction function
 def model_prediction(test_image):
-    model = tf.keras.models.load_model("road_pothole_Rainy_days.keras")
+    model_path = download_model()
     
-    # Load and preprocess the image
-    image = tf.keras.preprocessing.image.load_img(test_image, target_size=(256, 256))  # Adjust size to match your model
-    input_arr = tf.keras.preprocessing.image.img_to_array(image)
+    try:
+        # Load the model
+        model = tf.keras.models.load_model(model_path)
+        
+        # Load and preprocess the image
+        image = tf.keras.preprocessing.image.load_img(test_image, target_size=(256, 256))
+        input_arr = tf.keras.preprocessing.image.img_to_array(image)
+        input_arr = np.array([input_arr])  # Convert single image to batch
+        
+        # Show progress
+        with st.spinner("Analyzing road condition..."):
+            # Get prediction (raw probability)
+            raw_prediction = model.predict(input_arr)[0][0]  # Single value between 0 and 1
+            
+            # Apply threshold
+            threshold = 0.3
+            predicted_class = 1 if raw_prediction > threshold else 0
+            
+            # Map to class names
+            class_names = ["BAD ROAD", "Good road"]
+            result = class_names[predicted_class]
+            
+            # For confidence, use the raw prediction or its complement depending on the class
+            confidence = raw_prediction if predicted_class == 1 else (1 - raw_prediction)
+        
+        return result, confidence
     
-    input_arr = np.array([input_arr])  # Convert single image to batch
-    
-    # Get prediction (raw probability)
-    raw_prediction = model.predict(input_arr)[0][0]  # Single value between 0 and 1
-    
-    # Apply the same threshold you used during validation 
-    threshold=0.3
-    predicted_class = 1 if raw_prediction > threshold else 0
-    
-    # Map to class names
-    class_names = ["BAD ROAD", "Good road"]
-    result = class_names[predicted_class]
-    
-    # For confidence, use the raw prediction or its complement depending on the class
-    confidence = raw_prediction if predicted_class == 1 else (1 - raw_prediction)
-    
-    return result, confidence
-
-
-
+    except Exception as e:
+        st.error(f"Error in prediction: {e}")
+        return "Error", 0.0
 
 
 #Sidebar------------------------------------------------------------------------------------------------------
