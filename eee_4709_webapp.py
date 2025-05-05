@@ -306,6 +306,29 @@ elif(app_mode=="Project Report"):
         - 78% agreed with the model's assessments
         - 88% found the confidence meter helpful
         """)
+        
+        # Add the requested images from GitHub
+        st.image("Picture3.jpg", caption="Model Training Results", use_column_width=True)
+        st.image("Picture2.jpg", caption="Classification Performance", use_column_width=True)
+        st.image("Picture4.jpg", caption="Model Evaluation", use_column_width=True)
+        st.image("Picture5.jpg", caption="ROC Curve", use_column_width=True)
+        st.image("Picture6.jpg", caption="Confusion Matrix", use_column_width=True)
+        st.image("Picture7.jpg", caption="Per Class Metrics", use_column_width=True)
+        st.image("Picture8.jpg", caption="Cross-Validation Results", use_column_width=True)
+        
+        # Add the specified text
+        st.markdown("""
+        **Model Performance:**
+        o   Training accuracy: The model reaches a high training accuracy by the end of the 10 epochs (estimated ~87-90%)
+         
+        o   Validation accuracy: The model achieves good validation accuracy (~82-85%)
+        o   The model uses a threshold of 0.3 for classification, which suggests a balance toward reducing false negatives
+        
+        **Confusion Matrix and Classification Report:** The model evaluates performance on both "Good Road" and "Pothole Road" categories. Based on typical results for this type of model architecture, we would expect:
+        o   Precision for pothole detection: ~80-85%
+        o   Recall for pothole detection: ~75-80%
+        o   F1-score: ~77-82%
+        """)
     
     with tab4:
         st.markdown("""
