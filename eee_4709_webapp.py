@@ -53,7 +53,7 @@ threshold = st.sidebar.slider("Detection Threshold", 0.0, 1.0, 0.3, 0.05)
 show_advanced = st.sidebar.checkbox("Show Advanced Details", False)
 #Main Page
 if(app_mode=="Home"):
-    st.header("🛣️ Road Condition Recognition with Python")
+    st.header("Road Condition Recognition with Python")
     image_path = "home_page.jpeg"
     st.image(image_path, use_column_width=True)
 
@@ -64,26 +64,26 @@ Our goal is to support road safety and maintenance efforts by enabling quick on-
 
 ---
 ### 🔍 What This App Can Do
-- 🚧 Detect potholes and road damages in real-time
-- 📊 Show prediction confidence with visual feedback
-- 🖼️ Use your camera or upload road images
-- ⚙️ Adjust detection sensitivity to suit different environments
-- 📍 Visualize demo results on a map
-- 🎛️ Customize the app’s appearance with themes
+- Detect potholes and road damages in real-time
+- Show prediction confidence with visual feedback
+- Use your camera or upload road images
+- Adjust detection sensitivity to suit different environments
+- Visualize demo results on a map
+- Customize the app’s appearance with themes
 
 ---
-### 🧠 Under the Hood
+### Under the Hood
 This tool uses a **Convolutional Neural Network (CNN)** trained with augmented images to handle real-world conditions, especially in **rainy environments** where potholes become a major safety concern.
 
 ---
-### 🚀 How to Use
+###  How to Use
 1. Go to the **"Road Condition Detection"** tab from the sidebar.
 2. Upload a road image or take a photo.
 3. Click **"Analyze Road"** to get instant results.
 4. Check the results, confidence, and view previous analyses in the history log.
 
 ---
-### 🔧 Customization
+### Customization
 Use the sidebar to:
 - Set your **confidence threshold**
 - Change **themes**
@@ -119,7 +119,7 @@ elif theme == "Blue":
     """, unsafe_allow_html=True)
 #About Project
 elif(app_mode=="About"):
-    st.header("🚧 About This Web App")
+    st.header(" About This Web App")
     st.markdown("""
 Welcome to the **Road Condition Detector** — an AI-powered web application designed to assess the quality of road surfaces from images. Whether you're capturing a photo on-site or uploading an image, our system provides fast and reliable feedback on the road’s condition.
 
@@ -127,35 +127,35 @@ This tool is particularly useful for detecting **damaged or pothole-ridden roads
 
 ---
 
-### 🧠 How It Works
+### How It Works
 
 The app uses a **deep learning model (CNN)** trained on a curated dataset of road images. It classifies the input image into two categories:
 
-- ✅ **Good Road** – Safe, smooth, and well-maintained.  
-- ❌ **Bad Road** – Likely damaged, cracked, or susceptible to water accumulation.
+-  **Good Road** – Safe, smooth, and well-maintained.  
+-  **Bad Road** – Likely damaged, cracked, or susceptible to water accumulation.
 
 A customizable **threshold slider** lets you adjust the model's sensitivity, and each prediction includes a **confidence score** for transparency.
 
 ---
 
-### 📌 Key Features
+###  Key Features
 
-- 📷 Upload or capture images directly  
-- 📊 Confidence-based classification  
-- ⚙️ Adjustable detection threshold  
-- 🧾 Real-time prediction history  
-- 🗺️ Demo map integration  
-- 🎨 Theme customization (Light, Dark, Blue)
+-  Upload or capture images directly  
+-  Confidence-based classification  
+-  Adjustable detection threshold  
+-  Real-time prediction history  
+-  Demo map integration  
+-  Theme customization (Light, Dark, Blue)
 
 ---
 
-### 📂 About the Dataset
+###  About the Dataset
 
 The model is trained on a dataset recreated using offline augmentation techniques. The original dataset is publicly available on GitHub and focuses on pothole detection under various environmental conditions.
 
 ---
 
-### 🌐 Future Possibilities
+###  Future Possibilities
 
 This system can be integrated into:
 - Smart city monitoring tools  
