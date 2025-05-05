@@ -319,6 +319,17 @@ elif(app_mode=="Project Report"):
         - Epochs: 50 with early stopping (patience=10)
         - Validation split: 20%
         - Data shuffle: True
+        
+        ### Flowchart:
+        
+        """)
+        
+        # Display the flowchart images
+        st.image("flowchart1.png", caption="System Flowchart", use_column_width=True)
+        st.image("flowchart2.png", caption="Processing Pipeline", use_column_width=True)
+        
+        st.markdown("""
+        > Note: The flowcharts above illustrate the complete system workflow and the image processing pipeline.
         """)
     
     with tab3:
