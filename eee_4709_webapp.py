@@ -165,21 +165,26 @@ This system can be integrated into:
 
 ---
 
-### Developed By
+st.markdown("""
+---
 
-<div style='border: 1px solid #ccc; padding: 10px; border-radius: 10px; background-color: #002a47'>
+### 👥 **Meet the Team**
 
-**K. M. Sirazul Monir** — ID: 200021247  
-Lead Developer & UI/UX Designer
-(Led the coding of the web interface and handled user experience design)  
+📌 **K. M. Sirazul Monir** — *ID: 200021247*  
+_**Lead Developer & UI/UX Designer**_  
+> Led the coding of the web interface and handled user experience design.
 
-**Shafin Ibnul Mohasin** — ID: 200021244  
-Machine Learning Engineer
-(Developed and trained the deep learning model for road condition classification)
+📌 **Shafin Ibnul Mohasin** — *ID: 200021244*  
+_**Machine Learning Engineer**_  
+> Developed and trained the deep learning model for road condition classification.
 
-**Whiduzzaman Rishad** — ID: 200021228  
-Data Analyst & Integration Specialist
-(Managed dataset preparation, augmentation, and backend integration)
+📌 **Whiduzzaman Rishad** — *ID: 200021228*  
+_**Data Analyst & Integration Specialist**_  
+> Managed dataset preparation, augmentation, and backend integration.
+
+---
+""")
+
 
 > Built as part of an academic project at Islamic University of Technology. 
 > All team members contributed collaboratively across development, research, and system design.
