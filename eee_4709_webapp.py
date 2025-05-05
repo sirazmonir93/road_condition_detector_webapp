@@ -514,7 +514,6 @@ elif app_mode == "Project Report":
         </div>
         """, unsafe_allow_html=True)
         
-        st.image("Picture3.jpg", caption="Model Training Results", use_column_width=True)
         
         st.markdown("""
         <div class="card">
