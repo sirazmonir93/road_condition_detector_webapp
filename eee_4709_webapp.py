@@ -286,51 +286,12 @@ elif(app_mode=="Project Report"):
         st.markdown("""
         ## Methodology
         
-        ### Data Collection and Preparation
-        
-        The project utilized a combination of publicly available datasets and custom-collected images of road surfaces under various conditions. The initial dataset consisted of:
-        - 1,200 images of good road conditions
-        - 800 images of damaged roads and potholes
-        - 500 images of roads in rainy conditions
-        
-        Data augmentation techniques were applied to expand the dataset and improve model generalization:
-        - Rotation (±15°)
-        - Horizontal flipping
-        - Brightness/contrast adjustments
-        - Simulated rain effects
-        - Noise addition
-        
-        ### Model Architecture
-        
-        The CNN architecture consists of:
-        - Input layer (256×256×3)
-        - 4 Convolutional blocks with increasing filter sizes (32, 64, 128, 256)
-        - Each block: Conv2D → BatchNormalization → ReLU → MaxPooling2D
-        - Global Average Pooling
-        - Dense layer (128 neurons)
-        - Dropout (0.5)
-        - Output layer (1 neuron, sigmoid activation)
-        
-        ### Training Process
-        
-        - Optimizer: Adam (learning rate: 0.0001)
-        - Loss function: Binary Cross-Entropy
-        - Batch size: 32
-        - Epochs: 50 with early stopping (patience=10)
-        - Validation split: 20%
-        - Data shuffle: True
-        
         ### Flowchart:
-        
         """)
         
         # Display the flowchart images
         st.image("flowchart1.png", caption="System Flowchart", use_column_width=True)
         st.image("flowchart2.png", caption="Processing Pipeline", use_column_width=True)
-        
-        st.markdown("""
-        > Note: The flowcharts above illustrate the complete system workflow and the image processing pipeline.
-        """)
     
     with tab3:
         st.markdown("""
