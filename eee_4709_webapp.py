@@ -655,8 +655,9 @@ elif app_mode == "Project Report":
             <p>We thank our instructor, Md. Arefin Rabbi Emon, for guidance throughout this project. We also acknowledge the Islamic University of Technology for providing the resources and infrastructure necessary for development and testing.</p>
             </div>
             """, unsafe_allow_html=True)
+
     
-        with tab5:
+    with tab5:
         st.markdown("""
         <div class="card">
         <h2>References</h2>
