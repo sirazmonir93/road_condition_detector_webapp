@@ -63,7 +63,7 @@ Welcome to the **Road Condition Detection System** — a simple, smart, and effi
 Our goal is to support road safety and maintenance efforts by enabling quick on-the-spot assessments using nothing more than a photo — either captured directly or uploaded.
 
 ---
-### 🔍 What This App Can Do
+###  What This App Can Do
 - Detect potholes and road damages in real-time
 - Show prediction confidence with visual feedback
 - Use your camera or upload road images
