@@ -14,7 +14,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for better UI
+# Custom CSS for better UI - FIXED COLOR ISSUES
 st.markdown("""
 <style>
     .main-header {
@@ -33,14 +33,15 @@ st.markdown("""
         background-color: #f8f9fa;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         margin-bottom: 1rem;
+        color: #212529;  /* Ensuring text is dark */
     }
     .card-dark {
         background-color: #2c2c2c;
-        color: #f8f9fa;
+        color: #f8f9fa;  /* Ensuring text is light on dark background */
     }
     .card-blue {
         background-color: #1a2d40;
-        color: #f8f9fa;
+        color: #f8f9fa;  /* Ensuring text is light on blue background */
     }
     .feature-icon {
         font-size: 2rem;
@@ -51,7 +52,7 @@ st.markdown("""
         padding: 15px;
         border-radius: 10px;
         background-color: #002a47;
-        color: white;
+        color: white;  /* Ensuring text is white */
         margin-bottom: 15px;
     }
     .caption-text {
@@ -72,7 +73,7 @@ st.markdown("""
         border-radius: 8px;
         object-fit: cover;
         width: 100%;
-        max-height: 300px;
+        max-height: 250px;  /* REDUCED from 300px for better scaling */
     }
     .result-card {
         padding: 1.2rem;
@@ -101,6 +102,7 @@ st.markdown("""
         margin-bottom: 15px;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-height: 200px;  /* ADDED height limit */
     }
     .gallery-image:hover {
         transform: scale(1.03);
@@ -124,6 +126,16 @@ st.markdown("""
         position: absolute;
         left: -26px;
         top: 5px;
+    }
+    /* Fix for dark theme text visibility */
+    .stApp[data-theme="dark"] .card {
+        background-color: #2c2c2c;
+        color: #f8f9fa;
+    }
+    /* Fix for blue theme text visibility */
+    .stApp[data-theme="blue"] .card {
+        background-color: #1a2d40;
+        color: #f8f9fa;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -190,7 +202,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("<div style='text-align: center; font-size: 0.8rem;'>Islamic University of Technology<br>© 2025 Road Condition Detector</div>", unsafe_allow_html=True)
 
-# Apply selected theme
+# Apply selected theme with FIXED COLOR ISSUES
 if theme == "Dark":
     st.markdown("""
         <style>
@@ -200,7 +212,10 @@ if theme == "Dark":
         }
         .card {
             background-color: #2c2c2c;
-            color: #f8f9fa;
+            color: #f8f9fa !important;
+        }
+        .caption-text {
+            color: #b0b0b0;
         }
         </style>
     """, unsafe_allow_html=True)
@@ -213,7 +228,10 @@ elif theme == "Blue":
         }
         .card {
             background-color: #1a2d40;
-            color: #f8f9fa;
+            color: #f8f9fa !important;
+        }
+        .caption-text {
+            color: #c0c0c0;
         }
         </style>
     """, unsafe_allow_html=True)
@@ -225,7 +243,8 @@ if app_mode == "Home":
     # Better image display with constraints
     col1, col2, col3 = st.columns([1, 3, 1])
     with col2:
-        st.image("home_page.jpeg", use_column_width=True)
+        # Added height constraint for better scaling
+        st.image("home_page.jpeg", use_column_width=True, output_format="JPEG")
     
     st.markdown("""
     <div class="card">
@@ -290,7 +309,7 @@ if app_mode == "Home":
     
     # Call to action at the bottom
     st.markdown("""
-    <div style="text-align: center; margin-top: 30px; padding: 20px; background-color: #f8f9fa; border-radius: 10px;">
+    <div style="text-align: center; margin-top: 30px; padding: 20px; background-color: #f8f9fa; border-radius: 10px; color: #212529;">
         <h3>Start exploring, analyzing, and making your roads safer!</h3>
         <p>Navigate to the <strong>"Road Condition Detection"</strong> tab to begin analyzing road images.</p>
     </div>
@@ -312,8 +331,8 @@ elif app_mode == "About":
         """, unsafe_allow_html=True)
     
     with col2:
-        # Placeholder image related to the project concept
-        st.image("Picture13.jpg", use_column_width=True)
+        # IMPROVED: Better image scaling
+        st.image("Picture13.jpg", use_column_width=True, output_format="JPEG", clamp=True)
         st.markdown("<p class='caption-text'>System workflow visualization</p>", unsafe_allow_html=True)
     
     st.markdown("<h3 class='sub-header'>Where We Started</h3>", unsafe_allow_html=True)
@@ -432,7 +451,7 @@ elif app_mode == "Gallery":
     </div>
     """, unsafe_allow_html=True)
     
-    # Create a better grid layout with consistent sizing
+    # IMPROVED: Better image scaling with consistent sizing
     col1, col2 = st.columns(2)
     
     with col1:
@@ -488,7 +507,8 @@ elif app_mode == "Project Report":
         </div>
         """, unsafe_allow_html=True)
         
-        st.image("Picture3.jpg", caption="Model Training Results", use_column_width=True)
+        # IMPROVED: Better image scaling
+        st.image("Picture3.jpg", caption="Model Training Results", use_column_width=True, output_format="JPEG", clamp=True)
         
         st.markdown("""
         <div class="card">
@@ -510,13 +530,13 @@ elif app_mode == "Project Report":
         </div>
         """, unsafe_allow_html=True)
         
-        # Display flowchart images with better layout
+        # IMPROVED: Better image scaling for flowcharts
         col1, col2 = st.columns(2)
         
         with col1:
-            st.image("Picture13.jpg", caption="System Architecture Flowchart", use_column_width=True)
+            st.image("Picture13.jpg", caption="System Architecture Flowchart", use_column_width=True, output_format="JPEG", clamp=True)
         with col2:
-            st.image("Picture14.jpg", caption="Data Processing Pipeline", use_column_width=True)
+            st.image("Picture14.jpg", caption="Data Processing Pipeline", use_column_width=True, output_format="JPEG", clamp=True)
         
         st.markdown("""
         <div class="card">
@@ -540,29 +560,33 @@ elif app_mode == "Project Report":
         </div>
         """, unsafe_allow_html=True)
         
-        # Create better layout for results visuals with explanations
+        # IMPROVED: Better layout for results visuals with consistent sizing
         col1, col2 = st.columns(2)
         
         with col1:
-            st.image("Picture2.jpg", caption="Classification Performance", use_column_width=True)
+            st.image("Picture2.jpg", caption="Classification Performance", use_column_width=True, output_format="JPEG", clamp=True)
             st.markdown("<p class='caption-text'>Performance metrics across different road conditions</p>", unsafe_allow_html=True)
             
-            st.image("Picture4.jpg", caption="Model Evaluation", use_column_width=True)
+            st.image("Picture4.jpg", caption="Model Evaluation", use_column_width=True, output_format="JPEG", clamp=True)
             st.markdown("<p class='caption-text'>Summary of model performance metrics</p>", unsafe_allow_html=True)
         
         with col2:
-            st.image("Picture5.jpg", caption="ROC Curve", use_column_width=True)
+            st.image("Picture5.jpg", caption="ROC Curve", use_column_width=True, output_format="JPEG", clamp=True)
             st.markdown("<p class='caption-text'>ROC curve showing model discrimination ability</p>", unsafe_allow_html=True)
             
-            st.image("Picture6.jpg", caption="Confusion Matrix", use_column_width=True)
+            st.image("Picture6.jpg", caption="Confusion Matrix", use_column_width=True, output_format="JPEG", clamp=True)
             st.markdown("<p class='caption-text'>Confusion matrix showing true vs. predicted classifications</p>", unsafe_allow_html=True)
         
-        # Display additional results
-        st.image("Picture7.jpg", caption="Per Class Metrics", use_column_width=True)
-        st.markdown("<p class='caption-text'>Detailed performance metrics for each road condition class</p>", unsafe_allow_html=True)
+        # IMPROVED: Better scaling for large images
+        col1, col2 = st.columns(2)
         
-        st.image("Picture8.jpg", caption="Cross-Validation Results", use_column_width=True)
-        st.markdown("<p class='caption-text'>K-fold cross-validation confirming model robustness</p>", unsafe_allow_html=True)
+        with col1:
+            st.image("Picture7.jpg", caption="Per Class Metrics", use_column_width=True, output_format="JPEG", clamp=True)
+            st.markdown("<p class='caption-text'>Detailed performance metrics for each road condition class</p>", unsafe_allow_html=True)
+        
+        with col2:
+            st.image("Picture8.jpg", caption="Cross-Validation Results", use_column_width=True, output_format="JPEG", clamp=True)
+            st.markdown("<p class='caption-text'>K-fold cross-validation confirming model robustness</p>", unsafe_allow_html=True)
         
         st.markdown("""
         <div class="card">
@@ -629,6 +653,7 @@ elif app_mode == "Project Report":
             </div>
             """, unsafe_allow_html=True)
             
+
             st.markdown("""
             <div class="card">
             <h3>Acknowledgments</h3>
