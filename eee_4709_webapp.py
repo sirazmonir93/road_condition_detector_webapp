@@ -236,7 +236,7 @@ elif(app_mode=="Project Report"):
     st.header("Project Technical Report")
     
     # Create tabs for different sections of the report
-    tab1, tab2, tab3, tab4 = st.tabs(["Executive Summary", "Methodology", "Results", "Conclusion"])
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Executive Summary", "Methodology", "Results", "Conclusion", "References"])
     
     with tab1:
         st.markdown("""
@@ -341,8 +341,11 @@ elif(app_mode=="Project Report"):
         ### Acknowledgments
         
         We thank our instructor, Md. Arefin Rabbi Emon, for guidance throughout this project. We also acknowledge the Islamic University of Technology for providing the resources and infrastructure necessary for development and testing.
+        """)
         
-        ### References
+    with tab5:
+        st.markdown("""
+        ## References
         
         1. Koch, C., & Brilakis, I. (2011). Pothole detection in asphalt pavement images. Advanced Engineering Informatics, 25(3), 507-515. [https://doi.org/10.1016/j.aei.2011.01.002](https://doi.org/10.1016/j.aei.2011.01.002)
         
