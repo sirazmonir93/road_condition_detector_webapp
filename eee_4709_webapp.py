@@ -656,21 +656,21 @@ elif app_mode == "Project Report":
             </div>
             """, unsafe_allow_html=True)
     
-    with tab5:
+        with tab5:
         st.markdown("""
         <div class="card">
         <h2>References</h2>
         <ol>
-            <li>Koch, C., & Brilakis, I. (2011). Pothole detection in asphalt pavement images. Advanced Engineering Informatics, 25(3), 507-515.</li>
+            <li>Koch, C., & Brilakis, I. (2011). Pothole detection in asphalt pavement images. Advanced Engineering Informatics, 25(3), 507-515. <a href="https://doi.org/10.1016/j.aei.2011.01.002" target="_blank">https://doi.org/10.1016/j.aei.2011.01.002</a></li>
             <li>Nienaber, S., Booysen, M. J., & Kroon, R. (2015). Detecting potholes using simple image processing techniques and real-world footage. In Proceedings of the 34th Southern African Transport Conference (SATC 2015) (pp. 153-164).</li>
-            <li>Zhang, L., Yang, F., Zhang, Y. D., & Zhu, Y. J. (2017). Road crack detection using deep convolutional neural network. In 2017 IEEE International Conference on Image Processing (ICIP) (pp. 3708-3712). IEEE.</li>
-            <li>Fan, R., Bocus, M. J., Zhu, Y., Jiao, J., Wang, L., Ma, F., ... & Liu, M. (2019). Road crack detection using deep convolutional neural network and adaptive thresholding.</li>
-            <li>Maeda, H., Sekimoto, Y., Seto, T., Kashiyama, T., & Omata, H. (2018). Road damage detection and classification using deep neural networks with smartphone images.</li>
+            <li>Zhang, L., Yang, F., Zhang, Y. D., & Zhu, Y. J. (2017). Road crack detection using deep convolutional neural network. In 2017 IEEE International Conference on Image Processing (ICIP) (pp. 3708-3712). IEEE. <a href="https://doi.org/10.1109/ICIP.2017.8296970" target="_blank">https://doi.org/10.1109/ICIP.2017.8296970</a></li>
+            <li>Fan, R., Bocus, M. J., Zhu, Y., Jiao, J., Wang, L., Ma, F., ... & Liu, M. (2019). Road crack detection using deep convolutional neural network and adaptive thresholding. In 2019 IEEE Intelligent Vehicles Symposium (IV) (pp. 474-479). IEEE. <a href="https://doi.org/10.1109/IVS.2019.8813788" target="_blank">https://doi.org/10.1109/IVS.2019.8813788</a></li>
+            <li>Maeda, H., Sekimoto, Y., Seto, T., Kashiyama, T., & Omata, H. (2018). Road damage detection and classification using deep neural networks with smartphone images. Computer-Aided Civil and Infrastructure Engineering, 33(12), 1127-1141. <a href="https://doi.org/10.1111/mice.12387" target="_blank">https://doi.org/10.1111/mice.12387</a></li>
             <li>Chollet, F. (2018). Deep Learning with Python. Manning Publications.</li>
-            <li>American Society of Civil Engineers (ASCE). (2021). Infrastructure Report Card: Roads.</li>
-            <li>"Water-Pothole-Detection," Roboflow Universe.</li>
-            <li>"RoadSAW Dataset," Viscoda.</li>
-            <li>"StagnantWaterData," Kaggle.</li>
+            <li>American Society of Civil Engineers (ASCE). (2021). Infrastructure Report Card: Roads. <a href="https://infrastructurereportcard.org/cat-item/roads/" target="_blank">https://infrastructurereportcard.org/cat-item/roads/</a></li>
+            <li>"Water-Pothole-Detection," Roboflow Universe. [Online]. Available: <a href="https://universe.roboflow.com/vijayawada-annotation-data/water-pothole-detection" target="_blank">https://universe.roboflow.com/vijayawada-annotation-data/water-pothole-detection</a>. [Accessed: Mar. 3, 2025].</li>
+            <li>"RoadSAW Dataset," Viscoda. [Online]. Available: <a href="https://www.viscoda.com/downloads/roadsaw-dataset" target="_blank">https://www.viscoda.com/downloads/roadsaw-dataset</a>. [Accessed: Mar. 5, 2025].</li>
+            <li>"StagnantWaterData," Kaggle. [Online]. Available: <a href="https://www.kaggle.com/datasets/meraxes10/stagnantwaterdata" target="_blank">https://www.kaggle.com/datasets/meraxes10/stagnantwaterdata</a>. [Accessed: Mar. 4, 2025].</li>
         </ol>
         </div>
         """, unsafe_allow_html=True)
