@@ -122,7 +122,6 @@ elif(app_mode=="About"):
     st.header(" About This Web App")
     st.markdown("""
 Welcome to the **Road Condition Detector** — an AI-powered web application designed to assess the quality of road surfaces from images. Whether you're capturing a photo on-site or uploading an image, our system provides fast and reliable feedback on the road’s condition.
-uct
 This tool is particularly useful for detecting **damaged or pothole-ridden roads**, especially in **rainy weather scenarios** where early maintenance can prevent water clogging and accidents.
 
 ---
