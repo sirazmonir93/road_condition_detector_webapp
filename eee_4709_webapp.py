@@ -165,8 +165,24 @@ This system can be integrated into:
 
 ---
 
+### Developed By
+
+<div style='border: 1px solid #ccc; padding: 10px; border-radius: 10px; background-color: #f9f9f9'>
+
+**K. M. Sirazul Monir** — ID: 200021247  📷  
+**Shafin Ibnul Mohasin** — ID: 200021244  🧠  
+**Whiduzzaman Rishad** — ID: 200021228  🔧  
+
+> Built as part of an academic project at Islamic University of Technology. 
+> All team members contributed collaboratively across development, research, and system design.
+
+</div>
+
+---
+
 Explore the app and see it in action!
-    """)
+    """, unsafe_allow_html=True)
+
 
 # Prediction Page
 elif(app_mode == "Road condition detection"):
