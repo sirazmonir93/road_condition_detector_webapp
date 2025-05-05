@@ -181,7 +181,7 @@ Machine Learning Engineer
 Data Analyst & Integration Specialist
 (Managed dataset preparation, augmentation, and backend integration)
 
-*** Instructor : Md. Arefin Rabbi Emon ***
+Instructor : Md. Arefin Rabbi Emon
 
 
 > Built as part of an academic project at Islamic University of Technology. 
