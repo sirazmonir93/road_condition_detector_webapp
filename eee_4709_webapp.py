@@ -155,6 +155,23 @@ st.markdown("""
     .blue-theme .caption-text {
         color: #adb5bd;
     }
+    /* Video container styling */
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -189,7 +206,7 @@ with st.sidebar:
     
     app_mode = st.selectbox(
         "📋 Select Page",
-        ["Home", "About", "Road condition detection", "Gallery", "Project Report"]
+        ["Home", "About", "Road condition detection", "Gallery", "Project Report", "Video Demonstration"]
     )
     
     # Add customization options
@@ -700,6 +717,45 @@ elif app_mode == "Project Report":
         </div>
         """, unsafe_allow_html=True)
 
+# Video Demonstration page
+elif app_mode == "Video Demonstration":
+    st.markdown("<h1 class='main-header'>Video Demonstration</h1>", unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="card">
+    <h3>Project Demonstration Video</h3>
+    <p>Watch this video to see our Road Condition Detection System in action. The demonstration covers:</p>
+    <ul>
+      <li>How to use the web application</li>
+      <li>Features and capabilities of the system</li>
+      <li>Example analyses of different road conditions</li>
+      <li>Explanation of the results and confidence scores</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # YouTube video embed with responsive container
+    st.markdown("""
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/Ka_JbuyT6No" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="card">
+    <h3>Video Transcript</h3>
+    <p>For those who prefer reading or need accessibility support, here's a brief overview of what the video covers:</p>
+    <ol>
+      <li><strong>Introduction (0:00-0:30):</strong> Overview of the Road Condition Detection System and its purpose</li>
+      <li><strong>Interface Walkthrough (0:30-1:45):</strong> Demonstration of the web app's interface and features</li>
+      <li><strong>Good Road Analysis (1:45-3:00):</strong> Example analysis of a road in good condition</li>
+      <li><strong>Bad Road Analysis (3:00-4:30):</strong> Example analysis of a damaged road with potholes</li>
+      <li><strong>Results Interpretation (4:30-5:45):</strong> Explanation of how to interpret the confidence scores and recommendations</li>
+      <li><strong>Conclusion (5:45-end):</strong> Summary of key features and potential applications</li>
+    </ol>
+    </div>
+    """, unsafe_allow_html=True)
+
 # Prediction Page with improved UI/UX
 elif app_mode == "Road condition detection":
     st.markdown("<h1 class='main-header'>Road Quality Detection</h1>", unsafe_allow_html=True)
@@ -714,248 +770,4 @@ elif app_mode == "Road condition detection":
     col1, col2 = st.columns([2, 3])
     
     with col1:
-        # Let the user choose between uploading an image or using the camera with better styling
-        st.markdown("<h3 class='sub-header'>Image Input</h3>", unsafe_allow_html=True)
-        
-        input_option = st.radio(
-            "Select input method:",
-            ["Upload Image", "Use Camera"],
-            help="Choose how you want to provide the road image"
-        )
-        
-        if input_option == "Upload Image":
-            test_image = st.file_uploader(
-                "Choose a road image:",
-                type=["jpg", "jpeg", "png"],
-                help="Upload an image of a road to analyze its condition"
-            )
-        else:
-            test_image = st.camera_input(
-                "Take a picture of the road",
-                help="Use your camera to take a photo of the road"
-            )
-        
-        # Add instructions
-        st.markdown("""
-        <div class="card">
-        <h4>Tips for best results:</h4>
-        <ul>
-          <li>Ensure good lighting conditions</li>
-          <li>Capture the road surface clearly</li>
-          <li>Try to include any visible defects</li>
-          <li>For wet roads, include areas with water accumulation</li>
-        </ul>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col2:
-        # Show the image when available in a nicer container
-        if test_image is not None:
-            st.markdown("<h3 class='sub-header'>Selected Image</h3>", unsafe_allow_html=True)
-            st.markdown('<div class="image-container">', unsafe_allow_html=True)
-            st.image(test_image, use_column_width=True)
-            st.markdown('</div>', unsafe_allow_html=True)
-            
-            # Predict button with better styling
-            analyze_button = st.button(
-                "🔍 Analyze Road",
-                help="Click to analyze the road condition",
-                type="primary",
-                use_container_width=True
-            )
-        else:
-            st.markdown("""
-            <div style="height: 300px; display: flex; justify-content: center; align-items: center; border: 2px dashed #ccc; border-radius: 10px; margin-top: 20px;">
-                <div style="text-align: center; color: #666;">
-                    <h3>No Image Selected</h3>
-                    <p>Please upload an image or take a photo to analyze</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-            analyze_button = False
-    
-    # Add this near the top of your script (for history feature)
-    if 'history' not in st.session_state:
-        st.session_state.history = []
-    
-    # Predict logic with improved UI
-    if test_image is not None and analyze_button:
-        with st.spinner("Analyzing image..."):
-            # Show a progress bar for visual feedback
-            progress_bar = st.progress(0)
-            for i in range(100):
-                # Simulate progress while your model is actually working
-                time.sleep(0.01)
-                progress_bar.progress(i + 1)
-            
-            # Get prediction using your model_prediction function
-            result, confidence = model_prediction(test_image)
-            progress_bar.empty()  # Remove progress bar when done
-            
-            # Add some visual effects for user engagement
-            st.balloons()
-            
-            # Use columns for a better layout of results
-            st.markdown("<h3 class='sub-header'>Analysis Results</h3>", unsafe_allow_html=True)
-            
-            # Display the result with tabs
-            tab1, tab2 = st.tabs(["📊 Results", "🔬 Technical Details"])
-            
-            with tab1:
-                # Show different messages based on the result
-                if result == "Good road":
-                    st.markdown("""
-                    <div class="result-card good-road">
-                        <h3>✅ GOOD ROAD DETECTED</h3>
-                        <p>Confidence: <strong>{:.2%}</strong></p>
-                        <p>This road appears to be in good condition with no chances of clogged water formation in rainy seasons.</p>
-                    </div>
-                    """.format(confidence), unsafe_allow_html=True)
-                else:
-                    st.markdown("""
-                    <div class="result-card bad-road">
-                        <h3>⚠️ BAD ROAD DETECTED</h3>
-                        <p>Confidence: <strong>{:.2%}</strong></p>
-                        <p>This road has a high probability of clogged water formation in rainy seasons and may need maintenance.</p>
-                    </div>
-                    """.format(confidence), unsafe_allow_html=True)
-                
-                # Visual confidence meter with better styling
-                st.markdown("<p class='progress-label'>Confidence Level:</p>", unsafe_allow_html=True)
-                st.progress(int(confidence * 100))
-                
-                # Color coding based on confidence
-                if confidence > 0.8:
-                    st.success(f"High confidence: {confidence:.2%}")
-                elif confidence > 0.5:
-                    st.info(f"Medium confidence: {confidence:.2%}")
-                else:
-                    st.warning(f"Low confidence: {confidence:.2%}")
-                
-                # Add recommendation based on result
-                if result == "Good road":
-                    st.markdown("""
-                    <div class="card">
-                    <h4>Recommendation</h4>
-                    <p>✅ This road is in good condition and does not require immediate maintenance.</p>
-                    </div>
-                    """, unsafe_allow_html=True)
-                else:
-                    st.markdown("""
-                    <div class="card">
-                    <h4>Recommendation</h4>
-                    <p>⚠️ This road shows signs of damage and should be scheduled for maintenance, especially before the rainy season.</p>
-                    <p>Potential issues:</p>
-                    <ul>
-                      <li>Surface irregularities that may collect water</li>
-                      <li>Possible potholes or cracks</li>
-                      <li>Risk of further deterioration during rain</li>
-                    </ul>
-                    </div>
-                    """, unsafe_allow_html=True)
-            
-            with tab2:
-                st.markdown("""
-                <div class="card">
-                <h4>Technical Analysis Details</h4>
-                <table style="width:100%">
-                  <tr>
-                    <td><strong>Classification:</strong></td>
-                    <td>{}</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Confidence Score:</strong></td>
-                    <td>{:.2%}</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Model Architecture:</strong></td>
-                    <td>TensorFlow CNN</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Threshold Used:</strong></td>
-                    <td>0.3</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Processing Time:</strong></td>
-                    <td>~1 second</td>
-                  </tr>
-                </table>
-                </div>
-                """.format(result, confidence), unsafe_allow_html=True)
-                
-                if show_advanced:
-                    st.markdown("""
-                    <div class="card">
-                    <h4>Advanced Technical Information</h4>
-                    <p>The model uses a VGG-style CNN architecture with:</p>
-                    <ul>
-                      <li>5 convolutional blocks with filter sizes (32→64→128→256→512)</li>
-                      <li>Max pooling layers after each block</li>
-                      <li>Dropout layers (0.5) to prevent overfitting</li>
-                      <li>Binary cross-entropy loss function</li>
-                      <li>Adam optimizer with learning rate 0.001</li>
-                      <li>Image preprocessing: 256x256 resize, normalization</li>
-                    </ul>
-                    </div>
-                    """, unsafe_allow_html=True)
-            
-            # Save to history
-            import datetime
-            st.session_state.history.append({
-                "timestamp": datetime.datetime.now().strftime("%H:%M:%S"),
-                "result": result,
-                "confidence": confidence
-            })
-            
-            # Show history in expander with improved styling
-            with st.expander("Analysis History"):
-                if len(st.session_state.history) > 0:
-                    st.markdown('<div class="timeline">', unsafe_allow_html=True)
-                    for item in st.session_state.history:
-                        result_class = "good-road" if "Good" in item['result'] else "bad-road"
-                        st.markdown(f"""
-                        <div class="timeline-item">
-                            <strong>{item['timestamp']}</strong> - 
-                            <span class="{result_class}">{item['result']}</span> 
-                            ({item['confidence']:.2%})
-                        </div>
-                        """, unsafe_allow_html=True)
-                    st.markdown('</div>', unsafe_allow_html=True)
-                else:
-                    st.write("No previous analyses yet.")
-            
-            # Add a more interactive map component
-            with st.expander("View on Map (Demo)"):
-                st.markdown("""
-                <div class="card">
-                <p>This is a demonstration of how detected road issues could be visualized on a map. In a production environment, this would use GPS data from the image or device.</p>
-                </div>
-                """, unsafe_allow_html=True)
-                
-                import random
-                import pandas as pd
-                
-                # Generate a more realistic demo with multiple points if bad road
-                if result == "BAD ROAD":
-                    # This is just a placeholder - in a real app you would use GPS coordinates
-                    map_data = pd.DataFrame({
-                        'lat': [random.uniform(40.0, 41.0) for _ in range(3)],
-                        'lon': [random.uniform(-74.0, -73.0) for _ in range(3)]
-                    })
-                    st.map(map_data)
-                    st.markdown("""
-                    <div class="caption-text">
-                    <p>📍 Red markers indicate potential road issues in the area</p>
-                    </div>
-                    """, unsafe_allow_html=True)
-                else:
-                    map_data = pd.DataFrame({
-                        'lat': [random.uniform(40.0, 41.0)],
-                        'lon': [random.uniform(-74.0, -73.0)]
-                    })
-                    st.map(map_data)
-                    st.markdown("""
-                    <div class="caption-text">
-                    <p>📍 Green marker indicates analyzed road location (good condition)</p>
-                    </div>
-                    """, unsafe_allow_html=True)
+        # Let the user choose between uploading an image or using
