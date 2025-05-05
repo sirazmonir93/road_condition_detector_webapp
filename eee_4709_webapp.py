@@ -222,30 +222,15 @@ elif(app_mode=="Gallery"):
     """)
     
     # Create a grid layout for the gallery
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
     
     with col1:
-        st.image("https://via.placeholder.com/300x200.png?text=Good+Road+Example", caption="Good Road Example")
-        st.image("https://via.placeholder.com/300x200.png?text=Pothole+Detection", caption="Pothole Detection")
+        st.image("Picture9.jpg", caption="Road Analysis Sample 1", use_column_width=True)
+        st.image("Picture10.jpg", caption="Road Analysis Sample 2", use_column_width=True)
     
     with col2:
-        st.image("https://via.placeholder.com/300x200.png?text=Rainy+Condition", caption="Rainy Condition Analysis")
-        st.image("https://via.placeholder.com/300x200.png?text=UI+Screenshot", caption="Application Interface")
-    
-    with col3:
-        st.image("https://via.placeholder.com/300x200.png?text=Model+Training", caption="Model Training Process")
-        st.image("https://via.placeholder.com/300x200.png?text=Team+Photo", caption="Project Team")
-    
-    st.markdown("""
-    > Note: For the actual implementation, replace the placeholder images with real project images.
-    
-    ### Video Demo
-    
-    Watch our system in action:
-    """)
-    
-    # Placeholder for video (in actual implementation, link to a real video)
-    st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+        st.image("Picture11.jpg", caption="Road Analysis Sample 3", use_column_width=True)
+        st.image("Picture12.jpg", caption="Road Analysis Sample 4", use_column_width=True)
 
 elif(app_mode=="Project Report"):
     st.header("Project Technical Report")
