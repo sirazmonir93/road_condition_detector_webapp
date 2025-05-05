@@ -290,8 +290,8 @@ elif(app_mode=="Project Report"):
         """)
         
         # Display the flowchart images
-        st.image("flowchart1.png", caption="System Flowchart", use_column_width=True)
-        st.image("flowchart2.png", caption="Processing Pipeline", use_column_width=True)
+        st.image("Picture13.jpg", caption="System Flowchart", use_column_width=True)
+        st.image("Picture14.jpg", caption="Processing Pipeline", use_column_width=True)
     
     with tab3:
         st.markdown("""
