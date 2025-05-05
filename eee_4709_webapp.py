@@ -169,9 +169,17 @@ This system can be integrated into:
 
 <div style='border: 1px solid #ccc; padding: 10px; border-radius: 10px; background-color: #002a47'>
 
-**K. M. Sirazul Monir** — ID: 200021247  📷  
-**Shafin Ibnul Mohasin** — ID: 200021244  🧠  
-**Whiduzzaman Rishad** — ID: 200021228  🔧  
+**K. M. Sirazul Monir** — ID: 200021247  
+Lead Developer & UI/UX Designer
+(Led the coding of the web interface and handled user experience design)  
+
+**Shafin Ibnul Mohasin** — ID: 200021244  
+Machine Learning Engineer
+(Developed and trained the deep learning model for road condition classification)
+
+**Whiduzzaman Rishad** — ID: 200021228  
+Data Analyst & Integration Specialist
+(Managed dataset preparation, augmentation, and backend integration)
 
 > Built as part of an academic project at Islamic University of Technology. 
 > All team members contributed collaboratively across development, research, and system design.
