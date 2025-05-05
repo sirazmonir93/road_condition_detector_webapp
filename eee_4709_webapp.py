@@ -53,7 +53,7 @@ threshold = st.sidebar.slider("Detection Threshold", 0.0, 1.0, 0.3, 0.05)
 show_advanced = st.sidebar.checkbox("Show Advanced Details", False)
 #Main Page
 if(app_mode=="Home"):
-    st.header("Road Condition Recognition with Python")
+    st.header("Road Condition Monitoring System Using AI: A Novel Approach")
     image_path = "home_page.jpeg"
     st.image(image_path, use_column_width=True)
 
