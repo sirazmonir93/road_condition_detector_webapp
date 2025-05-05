@@ -341,6 +341,28 @@ elif(app_mode=="Project Report"):
         ### Acknowledgments
         
         We thank our instructor, Md. Arefin Rabbi Emon, for guidance throughout this project. We also acknowledge the Islamic University of Technology for providing the resources and infrastructure necessary for development and testing.
+        
+        ### References
+        
+        1. Koch, C., & Brilakis, I. (2011). Pothole detection in asphalt pavement images. Advanced Engineering Informatics, 25(3), 507-515. [https://doi.org/10.1016/j.aei.2011.01.002](https://doi.org/10.1016/j.aei.2011.01.002)
+        
+        2. Nienaber, S., Booysen, M. J., & Kroon, R. (2015). Detecting potholes using simple image processing techniques and real-world footage. In Proceedings of the 34th Southern African Transport Conference (SATC 2015) (pp. 153-164).
+        
+        3. Zhang, L., Yang, F., Zhang, Y. D., & Zhu, Y. J. (2017). Road crack detection using deep convolutional neural network. In 2017 IEEE International Conference on Image Processing (ICIP) (pp. 3708-3712). IEEE. [https://doi.org/10.1109/ICIP.2017.8296970](https://doi.org/10.1109/ICIP.2017.8296970)
+        
+        4. Fan, R., Bocus, M. J., Zhu, Y., Jiao, J., Wang, L., Ma, F., ... & Liu, M. (2019). Road crack detection using deep convolutional neural network and adaptive thresholding. In 2019 IEEE Intelligent Vehicles Symposium (IV) (pp. 474-479). IEEE. [https://doi.org/10.1109/IVS.2019.8813788](https://doi.org/10.1109/IVS.2019.8813788)
+        
+        5. Maeda, H., Sekimoto, Y., Seto, T., Kashiyama, T., & Omata, H. (2018). Road damage detection and classification using deep neural networks with smartphone images. Computer-Aided Civil and Infrastructure Engineering, 33(12), 1127-1141. [https://doi.org/10.1111/mice.12387](https://doi.org/10.1111/mice.12387)
+        
+        6. Chollet, F. (2018). Deep Learning with Python. Manning Publications.
+        
+        7. American Society of Civil Engineers (ASCE). (2021). Infrastructure Report Card: Roads. [https://infrastructurereportcard.org/cat-item/roads/](https://infrastructurereportcard.org/cat-item/roads/).
+        
+        8. "Water-Pothole-Detection," Roboflow Universe. [Online]. Available: [https://universe.roboflow.com/vijayawada-annotation-data/water-pothole-detection](https://universe.roboflow.com/vijayawada-annotation-data/water-pothole-detection). [Accessed: Mar. 3, 2025].
+        
+        9. "RoadSAW Dataset," Viscoda. [Online]. Available: [https://www.viscoda.com/downloads/roadsaw-dataset](https://www.viscoda.com/downloads/roadsaw-dataset). [Accessed: Mar. 5, 2025].
+        
+        10. "StagnantWaterData," Kaggle. [Online]. Available: [https://www.kaggle.com/datasets/meraxes10/stagnantwaterdata](https://www.kaggle.com/datasets/meraxes10/stagnantwaterdata). [Accessed: Mar. 4, 2025].
         """)
 
 # Prediction Page
