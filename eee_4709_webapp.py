@@ -167,7 +167,7 @@ This system can be integrated into:
 
 ### Developed By
 
-<div style='border: 1px solid #ccc; padding: 10px; border-radius: 10px; background-color: #f9f9f9'>
+<div style='border: 1px solid #ccc; padding: 10px; border-radius: 10px; background-color: #002a47'>
 
 **K. M. Sirazul Monir** — ID: 200021247  📷  
 **Shafin Ibnul Mohasin** — ID: 200021244  🧠  
