@@ -127,18 +127,25 @@ This tool is particularly useful for detecting **damaged or pothole-ridden roads
 
 ---
 
-### How It Works
+### Where We Started
 
-The app uses a **deep learning model (CNN)** trained on a curated dataset of road images. It classifies the input image into two categories:
+We began this project with a simple question: *Can AI help us identify bad roads before they become dangerous?*  
+In regions with heavy rainfall and poor infrastructure, road damage often goes unnoticed until it causes serious problems. This inspired us to create a tool that could assist in early detection — accessible to both professionals and the public.
+
+---
+
+### What We Built
+
+We developed a smart, intuitive web app powered by a **Convolutional Neural Network (CNN)**. This deep learning model analyzes road surface images and categorizes them as:
 
 -  **Good Road** – Safe, smooth, and well-maintained.  
 -  **Bad Road** – Likely damaged, cracked, or susceptible to water accumulation.
 
-A customizable **threshold slider** lets you adjust the model's sensitivity, and each prediction includes a **confidence score** for transparency.
+Users can either **upload** or **capture** road images in real time, adjust a **threshold slider** to control sensitivity, and view a **confidence score** with each prediction.
 
 ---
 
-###  Key Features
+### Key Features
 
 -  Upload or capture images directly  
 -  Confidence-based classification  
@@ -149,42 +156,55 @@ A customizable **threshold slider** lets you adjust the model's sensitivity, and
 
 ---
 
-###  About the Dataset
+### What We Found
 
-The model is trained on a dataset recreated using offline augmentation techniques. The original dataset is publicly available on GitHub and focuses on pothole detection under various environmental conditions.
+During development, we realized that:
+- **Data quality and variety are critical** — augmenting images offline significantly improved model accuracy.
+- The **model performed best** under clear and moderately rainy conditions but struggles with extreme visual obstructions.
+- A **simple, user-friendly interface** greatly enhances accessibility for non-technical users.
+
+These findings helped us refine the app's scope and improve its general usability and prediction reliability.
 
 ---
 
-###  Future Possibilities
+### About the Dataset
 
-This system can be integrated into:
-- Smart city monitoring tools  
-- Municipality road reporting systems  
-- Road maintenance scheduling dashboards  
-- Crowdsourced infrastructure reporting apps
+The model was trained on a publicly available pothole dataset, extended using **offline augmentation techniques** to simulate diverse weather and lighting conditions. This enabled the model to generalize well across real-world scenarios.
+
+---
+
+### What’s Next
+
+We see immense potential for future development:
+
+- Integration with **municipality road monitoring systems**  
+- Use in **smart cities** for automated damage detection  
+- Creation of a **mobile app** version for field inspectors  
+- Building a **crowdsourced platform** for reporting and tracking road health  
+
+Our goal is to make this tool more scalable, precise, and deployable at larger infrastructure levels.
 
 ---
 
 ### Developed By
 
-<div style='border: 1px solid #ccc; padding: 10px; border-radius: 10px; background-color: #002a47'>
+<div style='border: 1px solid #ccc; padding: 10px; border-radius: 10px; background-color: #002a47; color: white;'>
 
-**K. M. Sirazul Monir** — ID: 200021247  
-Lead Developer & UI/UX Designer
-(Led the coding of the web interface and handled user experience design)  
+📌 **K. M. Sirazul Monir** — *ID: 200021247*  
+_**Lead Developer & UI/UX Designer**_  
+> Led the coding of the web interface and handled user experience design.  
 
-**Shafin Ibnul Mohasin** — ID: 200021244  
-Machine Learning Engineer
-(Developed and trained the deep learning model for road condition classification)
+📌 **Shafin Ibnul Mohasin** — *ID: 200021244*  
+_**Machine Learning Engineer**_  
+> Developed and trained the deep learning model for road condition classification.
 
-**Whiduzzaman Rishad** — ID: 200021228  
-Data Analyst & Integration Specialist
-(Managed dataset preparation, augmentation, and backend integration)
+📌 **Whiduzzaman Rishad** — *ID: 200021228*  
+_**Data Analyst & Integration Specialist**_  
+> Managed dataset preparation, augmentation, and backend integration.
 
-Instructor : Md. Arefin Rabbi Emon
+👨‍🏫 **Instructor:** Md. Arefin Rabbi Emon  
 
-
-> Built as part of an academic project at Islamic University of Technology. 
+> Built as part of an academic project at **Islamic University of Technology**.  
 > All team members contributed collaboratively across development, research, and system design.
 
 </div>
@@ -193,6 +213,17 @@ Instructor : Md. Arefin Rabbi Emon
 
 Explore the app and see it in action!
     """, unsafe_allow_html=True)
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Prediction Page
